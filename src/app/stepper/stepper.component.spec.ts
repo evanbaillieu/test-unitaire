@@ -27,7 +27,14 @@ describe('StepperComponent', () => {
   })
 
   it('increment value', () => {
-    let buttonIncrement = fixture.nativeElement.querySelector('[data-testId="increment"]')
-    
+    let buttonIncrement: HTMLElement = fixture.nativeElement.querySelector('[data-testId="increment"]')
+    let spanCount: HTMLSpanElement = fixture.nativeElement.querySelector('[data-testId="counter"]')
+    let text = spanCount.innerHTML
+    expect(text).toBe('0');
+    buttonIncrement.click();
+    fixture.detectChanges();
+    spanCount = fixture.nativeElement.querySelector('[data-testId="counter"]')
+    text = spanCount.innerHTML
+    expect(text).toBe('1')
   })
 });
